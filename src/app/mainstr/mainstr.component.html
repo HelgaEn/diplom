@@ -1,0 +1,42 @@
+
+    <div class="container col-xxl-8 px-4 py-5">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+          <img src="/assets/img/приют.jpg" class="d-block mx-lg-auto img-fluid" alt="приют" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+          <h1 class="display-5 fw-bold lh-1 mb-3">Муниципальный приют г. Саранска</h1>
+          <p class="lead">Лучше маленькая помощь, чем большое сочувствие!</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Стать волонтёром!</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4">О нас</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div class="album py-5 bg-light">
+
+ <h1 class="text-center my-5">Наши подопечные</h1>
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <ng-container *ngFor="let post of tposts" >
+        <div class="col">
+          <div class="card shadow-sm">
+            
+            <div class="bd-placeholder-img card-img-top" width="100%" height="225" ><img width="100%" height="225" src="{{post.image}}"></div>
+            
+            <div class="card-body">
+              <p class="card-text">{{post.name}}</p>
+              <p class="card-text">{{post.description}}</p>
+            </div>
+
+          </div>
+        </div>
+      </ng-container>
+      </div>
+    </div>
+  </div>
+
+  

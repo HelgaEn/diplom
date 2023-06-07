@@ -1,0 +1,56 @@
+<div>
+    <main class="form-signin col-lg-6 mx-auto">
+      <form class="">
+        <h1 class="h3 mb-3 fw-bold">Ввести информацию о новом подопечном</h1>    
+        <div class="form-floating mb-3">
+          <input #log="ngModel" name="animal" [(ngModel)]="inputAnimal.type" type="text"  class="form-control"  >
+          <label for="floatingInput">Животное</label>
+       </div>
+        <div class="form-floating mb-3">
+          <input required #pass="ngModel" name="name" [(ngModel)]="inputAnimal.name" type="text" class="form-control"  >
+          <label for="floatingInput">Кличка</label>
+        </div>      
+        <!--minlength="5" pattern="[a-zA-Z]^[ 0-9]+$*"-->
+        <div class="form-floating mb-3">
+           <input #log="ngModel" name="age" [(ngModel)]="inputAnimal.age" type="text"  class="form-control"  >
+           <label for="floatingInput">Возраст</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input #log="ngModel" name="description" [(ngModel)]="inputAnimal.description" type="text"  class="form-control"  >
+            <label for="floatingInput">Описание</label>
+         </div>
+         <div class="form-floating mb-3">
+            <input #log="ngModel" name="img" [(ngModel)]="inputAnimal.image" type="text"  class="form-control"  >
+            <label for="floatingInput">Ссылка на изображение</label>
+         </div>
+        
+            
+        <button  (click)="newAnimal()"  class="w-100 btn btn-lg btn-primary" type="submit">Отправить</button>
+  <!-- [disabled]="log.invalid || pass.invalid"-->
+      </form>
+    </main>
+</div>
+<div>
+    <main class="form-signin col-lg-6 mx-auto">
+        <form #myForm="ngForm" >
+          <h1 class="h3 mb-3 fw-bold">Новое событие</h1>    
+          <div class="form-floating mb-3">
+            <input #log="ngModel" name="title" [(ngModel)]="inputNews.title" type="text"  class="form-control"  >
+            <label for="floatingInput">Заголовок</label>
+         </div>
+          <div class="form-floating mb-3">
+            <input required #pass="ngModel" name="src" [(ngModel)]="inputNews.img" type="text" class="form-control"  >
+            <label for="floatingPassword">Ссылка на изображение</label>
+          </div>      
+          <!--minlength="5" pattern="[a-zA-Z]^[ 0-9]+$*"-->
+          <div class="form-floating mb-3">
+             <input #log="ngModel" name="text" [(ngModel)]="inputNews.text" type="text"  class="form-control"  >
+             <label for="floatingInput">Что нового?</label>
+          </div>
+                  
+              
+          <button   (click)="newNews()" class="w-100 btn btn-lg btn-primary" type="submit">Отправить</button>
+    <!-- [disabled]="log.invalid || pass.invalid"-->
+        </form>
+      </main>
+</div>

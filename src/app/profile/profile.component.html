@@ -1,0 +1,42 @@
+
+
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row g-5 py-5">
+     
+      <div class="col-lg-6">
+
+        <div class="col-10 col-sm-8 col-lg-5">
+          <img src="" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+<!-- {{this.thisUser.image}} -->
+        <h1 class="display-5 fw-bold lh-1 mb-3"> 
+          {{this.thisUser.name}} </h1>
+        <p class="lead">Имя: 
+        {{this.thisUser.name}}
+        </p>
+        <p class="lead">Фамилия: 
+          {{this.thisUser.surname}} 
+          </p>
+          <p class="lead">Email: 
+            {{this.thisUser.email}}
+            </p>
+          <p class="lead">Права доступа: 
+            {{this.thisUser.role}}
+            </p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='guest')? ('none'):('unset')}" routerLink="/admin">Администрирование</button>
+        </div>
+     
+      </div>
+
+
+      <div>
+      <div class="col-lg-5  ">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" >Редактировать данные</button>
+      </div>
+      <div class="col-lg-5  ">
+        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" routerLink="/admin">Панель управления</button>
+      </div>
+    </div>
+    </div>
+  </div>

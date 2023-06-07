@@ -1,0 +1,85 @@
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow ">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="">
+        <img src="/assets/img/Layer_1.svg" alt="" width="40"  class="d-inline-block align-text-top"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Переключатель навигации">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page">Муниципальный приют г. Саранск</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="" [title]="'в начало'">Главная</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/catalog" [title]="'товары'">Наши подопечные</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/news" [title]="'в начало'">О нас</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="" [title]="'в начало'">Обрели дом</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/help" [title]="'в начало'">Помочь приюту</a>
+        </li>
+      </ul>
+      <div class="d-flex">
+        <div class="mx-3" [ngStyle]="{'display':(rolesService.role==='guest')? ('none'):('unset')}">
+          <p routerLink="/profile"> {{userData.newUser.name}}
+          {{rolesService.role}}</p>
+        </div>
+        <p
+             routerLink="/auth"
+              class="btn btn-primary me-md-2" 
+              [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='admin')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}"
+              
+            >
+              Войти
+        </p>
+        <p
+             routerLink="/register"
+              class="btn btn-primary" 
+              [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='admin')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}"
+              
+            >
+              Регистрация
+        </p>
+            <button
+          type="button"
+          class="btn btn-primary" 
+          routerLink="/admin"
+          [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='guest')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}"
+        >
+          Администрирование
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary" 
+          routerLink="/admin"
+          [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='guest')? ('none'):(rolesService.role==='admin')? ('none'):('unset')}"
+        >
+          Кабинет волонтёра
+        </button>
+            <button
+            type="button"
+            class="btn btn-primary" 
+            [ngStyle]="{'display':(rolesService.role==='guest')? ('none'):('unset')}"
+          
+            (click)="resetUser()"
+            
+          >
+            Выход
+          </button>
+          
+        </div>
+    </div>
+  </div>
+</nav>
+
+  <router-outlet>
+  </router-outlet>
+
+  

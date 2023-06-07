@@ -1,0 +1,69 @@
+<h1 class="text-center my-5">Помочь приюту</h1>
+<div class="container my-5">
+<p>Дорогие друзья!
+    Если у вас есть желание и возможность помочь приюту для безнадзорных животных г. Саранска, вы можете оказать содействие по следующим направлениям:</p>
+    <ul>
+        <li> Пиар, реклама - рассказать о нас друзьям, знакомым, осветить нашу деятельность на различных интернет площадках</li>
+        <li> Кураторство или (со)кураторство - оставляйте заявки на волонтёрство и помощь с социализацией подопечных</li>
+        <li> Финансовая помощь - деньги можно перечислить на карту и они будут напралены на нужды приюта</li>
+    </ul>
+   <p>По возможности оставляйте обратную связь. Заранее спасибо!!</p>
+</div>
+<h1 class="text-center my-5">Оставить заявку на кураторство</h1>
+<p class="text-center my-5 fs-4"> У вас уже есть аккаунт пользователя?</p>
+<main class="form-signin col-lg-6 mx-auto">
+    <form class="">
+ 
+      <div class="form-floating mb-3">
+        <input #log="ngModel" name="email" [(ngModel)]="user.email" type="text"  class="form-control"  >
+        <label for="floatingInput">email</label>
+     </div>
+     <button    class="w-100 btn btn-lg btn-primary" type="submit" (click)="volUser()" >Отправить</button>
+     <!-- [disabled]="log.invalid || pass.invalid"-->
+           
+         </form>
+       </main>
+
+<p class="text-center my-5 fs-4"> Пройти регистрацию и отправить заявку</p>
+<div class="text-center">
+    
+    <main class="form-signin col-lg-6 mx-auto">
+      <form class="">
+   
+        <div class="form-floating mb-3">
+          <input #log="ngModel" name="email" [(ngModel)]="user.email" type="text"  class="form-control"  >
+          <label for="floatingInput">email</label>
+       </div>
+        <div class="form-floating mb-3">
+          <input required #pass="ngModel" name="password" [(ngModel)]="user.password" type="text" class="form-control"  >
+          <label for="floatingPassword">Пароль</label>
+        </div>      
+        <!--minlength="5" pattern="[a-zA-Z]^[ 0-9]+$*"-->
+        <div class="form-floating mb-3">
+           <input #log="ngModel" name="name" [(ngModel)]="user.name" type="text"  class="form-control"  >
+           <label for="floatingInput">Имя</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input #log="ngModel" name="surname" [(ngModel)]="user.surname" type="text"  class="form-control"  >
+            <label for="floatingInput">Фамилия</label>
+         </div>
+        
+            
+        <button    class="w-100 btn btn-lg btn-primary" type="submit" (click)="regUser()" >Регистрация</button>
+  <!-- [disabled]="log.invalid || pass.invalid"-->
+        
+      </form>
+    </main>
+    
+    </div>
+    <h1 class="text-center my-5">Финансовая помощь и отчеты</h1>
+    <p class="text-center my-5 fs-4"> Реквезиты для перевода денежных средств</p>
+    <div class="container my-5"><b>2202202329582500</b>
+        <br>
+        Карта оформлена на Евгения Евгеньевна К.
+        <br>
+        Достаточно просто пополнить счёт карты любым удобным для Вас способом.
+        <br>
+        Выписка о движение средств по карте будет будет выкладываться раз в месяцs
+    </div>
+    <p class="text-center my-5 fs-4"> Финансовые отчёты</p>
