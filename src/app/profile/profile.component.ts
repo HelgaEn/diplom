@@ -13,10 +13,27 @@ export class ProfileComponent implements OnInit {
   constructor(public rolesService: RolesService, public userdata: UserdataService) { }
 
 
-  thisUser= this.userdata.newUser;
+ 
+  thisUser: User=
+  {name:  localStorage.getItem('name'),
+  surname: localStorage.getItem('surname'),
+  email: localStorage.getItem('email'),
+  password: localStorage.getItem('password'),
+  role: localStorage.getItem('role'),
+  image: localStorage.getItem('image'),};
 
-  ngOnInit(): void {
-   // this.userdata.getUser(this.thisUser.email).subscribe({next:(data:any) => this.thisUser= data})
+  ngOnInit(): void {  
+    if (!localStorage.getItem("reload")) {
+      
+            localStorage.setItem("reload", "true");
+            location.reload();
+        }
+      
+        else {
+            localStorage.removeItem("reload");
+      
+        }
+    
   }
 
 }

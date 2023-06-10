@@ -6,6 +6,7 @@ import { Animal } from '../animal';
 
 
 
+
 @Component({
   selector: 'app-mainstr',
   templateUrl: './mainstr.component.html',
@@ -19,6 +20,8 @@ export class MainstrComponent implements OnInit {
   posts: Animal[]=[];
   tposts: Animal[]=[];
   ngOnInit(): void {
+
+    
    this.post.postData().subscribe({next:(data:any) => {
     this.posts.push(data); 
     //this.posts= data;

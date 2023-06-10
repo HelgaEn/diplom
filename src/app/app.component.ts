@@ -19,17 +19,32 @@ import { PostdataService } from './postdata.service';
 export class AppComponent {
   constructor(public rolesService: RolesService, public router: Router, public userData: UserdataService, private test2: PostdataService){}
   title = 'Главная';
+
+  //user: any;
+  /*tuser=this.store.select(AuthState.getUserInfo).subscribe({
+    next: (value)=>{
+      this.user=value.name;
+    }
+  });*/
+  user= localStorage.getItem('name');
+ 
+  //user=this.store.selectSnapshot(AuthState.getUserInfo).name;
+  
+
  res: any;
   resetUser(){
     
-    this.rolesService.role="guest";
+    //this.rolesService.role="guest";
+    localStorage.clear();
+    //localStorage.setItem('role',null);
     //location.reload();//чтобы сбросить данные пользователя, проверь как будет работать на вкладке аккаунта
     setTimeout(
       function(){
         location.reload()//костыль
-      },1000
+      },10
     );
     return this.router.navigateByUrl('/')
+    
     
   }
   getUser(){

@@ -8,6 +8,8 @@ import {
   UrlTree,
 } from '@angular/router';
 import { UserdataService } from '../userdata.service';
+import { Store } from '@ngxs/store';
+
 
 
 
@@ -24,7 +26,7 @@ export class AuthorizationComponent implements OnInit {
     password: null,
   };
 
-  constructor(public rolesService: RolesService, public router: Router, private userdata: UserdataService) { }
+  constructor(public rolesService: RolesService, public router: Router, private userdata: UserdataService, private store: Store) { }
 
   ngOnInit(): void {
   }
@@ -65,13 +67,21 @@ export class AuthorizationComponent implements OnInit {
     this.userdata.getUser(this.user.login).subscribe({next:(data:any) => {
       this.servpass = data.password
       // сохранить данные в стор
-      this.userdata.newUser=data;
-      this.rolesService.role=data.role;
+      
       console.log(data.password)
       if(this.user.password == this.servpass)
     {
-
-      return this.router.navigateByUrl('/profile')
+  
+      this.rolesService.role=data.role;
+      localStorage.setItem('name',data.name);
+      localStorage.setItem('surname',data.surname);
+      localStorage.setItem('email', data.email);
+      localStorage.setItem('password', data.password);
+      localStorage.setItem('role', data.role);
+      localStorage.setItem('image', data.image);
+      //console.log(this.store.selectSnapshot(AuthState.getUserInfo).name)
+      return this.router.navigateByUrl('/profile');
+      
     }
     else
     {

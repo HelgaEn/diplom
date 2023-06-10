@@ -27,8 +27,8 @@
         </li>
       </ul>
       <div class="d-flex">
-        <div class="mx-3" [ngStyle]="{'display':(rolesService.role==='guest')? ('none'):('unset')}">
-          <p routerLink="/profile"> {{userData.newUser.name}}
+        <div class="mx-3" [ngStyle]="{'display':(rolesService.role===null)? ('none'):('unset')}">
+          <p routerLink="/profile"> {{userData.nowUser.name}}
           {{rolesService.role}}</p>
         </div>
         <p
@@ -51,7 +51,7 @@
           type="button"
           class="btn btn-primary" 
           routerLink="/admin"
-          [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='guest')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}"
+          [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role===null)? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}"
         >
           Администрирование
         </button>
@@ -59,14 +59,14 @@
           type="button"
           class="btn btn-primary" 
           routerLink="/admin"
-          [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='guest')? ('none'):(rolesService.role==='admin')? ('none'):('unset')}"
+          [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role===null)? ('none'):(rolesService.role==='admin')? ('none'):('unset')}"
         >
           Кабинет волонтёра
         </button>
             <button
             type="button"
             class="btn btn-primary" 
-            [ngStyle]="{'display':(rolesService.role==='guest')? ('none'):('unset')}"
+            [ngStyle]="{'display':(rolesService.role===null)? ('none'):('unset')}"
           
             (click)="resetUser()"
             

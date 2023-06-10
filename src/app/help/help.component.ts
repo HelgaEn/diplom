@@ -27,12 +27,12 @@ export class HelpComponent implements OnInit {
     })
     this.rolesService.role ='user';
     //отправить емейл в таблицу заявок
-    this.volUser()
+    //this.volUser()
    
   }
-  volUser(){
+ volUser(){/* 
      //отправить емейл в таблицу заявок
-     this.userdata.setVol(this.user.email).subscribe({})
+     this.userdata.setVol(this.user.email).subscribe({})*/
   }
 
   ngOnInit(): void {

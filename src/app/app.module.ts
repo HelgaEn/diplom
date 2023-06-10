@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
@@ -14,6 +15,9 @@ import { PodopechnieComponent } from './podopechnie/podopechnie.component';
 import { NewsComponent } from './news/news.component';
 import { AdminComponent } from './admin/admin.component';
 import { HelpComponent } from './help/help.component';
+import { NgxsLoggerPlugin, NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+
 
 
 
@@ -36,7 +40,10 @@ import { HelpComponent } from './help/help.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NgxsModule.forRoot([]),
+    NgxsLoggerPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
