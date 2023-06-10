@@ -1,0 +1,29 @@
+<h1 class="text-center my-5">Бюро находок</h1>
+<div class="container col-xxl-8 px-4 py-5">
+    <div id="map" class="map"></div>
+    </div>
+
+    <button (click)="test()">test</button>
+<div class="col-4 mx-auto">
+    <form>
+        <div class="form-floating">
+            <input  #log="ngModel" name="co1" [(ngModel)]="coord[0]" type="any"  class="form-control"  >
+            <label for="floatingInput"></label>
+          </div>
+          <div class="form-floating">
+            <input  #log="ngModel" name="co2" [(ngModel)]="coord[1]" type="any"  class="form-control"  >
+            <label for="floatingInput"></label>
+          </div>
+          <button (click)="setPoint()"  class="w-100 btn btn-lg btn-primary" type="submit">mark</button>
+    </form>
+</div>
+<div class="col-4 mx-auto">
+    <form>
+        <div class="form-floating">
+            <input  #log="ngModel" name="co1" [(ngModel)]="address" type="text"  class="form-control"  >
+            <label for="floatingInput">address</label>
+          </div>
+          
+          <button (click)="test()"  class="w-100 btn btn-lg btn-primary" type="submit">coord</button>
+    </form>
+</div>

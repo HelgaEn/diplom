@@ -22,6 +22,8 @@ export class ProfileComponent implements OnInit {
   role: localStorage.getItem('role'),
   image: localStorage.getItem('image'),};
 
+
+  
   ngOnInit(): void {  
     if (!localStorage.getItem("reload")) {
       

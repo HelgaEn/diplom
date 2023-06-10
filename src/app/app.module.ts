@@ -17,6 +17,7 @@ import { AdminComponent } from './admin/admin.component';
 import { HelpComponent } from './help/help.component';
 import { NgxsLoggerPlugin, NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { BureauComponent } from './bureau/bureau.component';
 
 
 
@@ -33,7 +34,8 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
     PodopechnieComponent,
     NewsComponent,
     AdminComponent,
-    HelpComponent
+    HelpComponent,
+    BureauComponent
   ],
   imports: [
     BrowserModule,

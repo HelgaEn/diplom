@@ -12,6 +12,7 @@ import { PodopechnieComponent } from './podopechnie/podopechnie.component';
 import { NewsComponent } from './news/news.component';
 import { AdminComponent } from './admin/admin.component';
 import { HelpComponent } from './help/help.component';
+import { BureauComponent } from './bureau/bureau.component';
 
 const routes: Routes = [
   
@@ -54,6 +55,11 @@ const routes: Routes = [
     path: "help",
     title:"Помочь приюту",
     component: HelpComponent 
+  },
+  {
+    path: "bureau",
+    title:"Бюро находок",
+    component: BureauComponent
   },
   {
     path: "**",

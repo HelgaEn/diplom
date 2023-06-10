@@ -35,4 +35,8 @@ export class PostdataService {
   getNews(){
     return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/news.json');
   }
+
+  getCoord(address: string){
+    return this.http.get('https://geocode-maps.yandex.ru/1.x/?format=json&apikey=ed610ab4-6610-41f0-bd68-aa19f102bf19&geocode='+address);
+  }
 }
