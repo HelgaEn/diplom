@@ -32,11 +32,12 @@
 
       <div>
       <div class="col-lg-5  ">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" >Редактировать данные</button>
-      </div>
-      <div class="col-lg-5  ">
-        <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" routerLink="/admin">Панель управления</button>
+        <button [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role===null)? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}" type="button" class="btn btn-primary btn-lg px-4 me-md-2" routerLink="/admin">Панель управления</button>
       </div>
     </div>
     </div>
   </div>
+  <div class="col-4 mx-auto">
+
+</div>
+

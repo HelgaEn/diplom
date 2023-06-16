@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RolesService } from '../roles.service';
 import { User } from '../user';
 import { UserdataService } from '../userdata.service';
+import { PostdataService } from '../postdata.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import { UserdataService } from '../userdata.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(public rolesService: RolesService, public userdata: UserdataService) { }
+  constructor(public rolesService: RolesService, public userdata: UserdataService, public post: PostdataService) { }
 
 
  
@@ -21,8 +22,6 @@ export class ProfileComponent implements OnInit {
   password: localStorage.getItem('password'),
   role: localStorage.getItem('role'),
   image: localStorage.getItem('image'),};
-
-
   
   ngOnInit(): void {  
     if (!localStorage.getItem("reload")) {

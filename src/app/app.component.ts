@@ -28,16 +28,12 @@ export class AppComponent {
   });*/
   user= localStorage.getItem('name');
  
-  //user=this.store.selectSnapshot(AuthState.getUserInfo).name;
-  
-
  res: any;
   resetUser(){
     
-    //this.rolesService.role="guest";
+    
     localStorage.clear();
-    //localStorage.setItem('role',null);
-    //location.reload();//чтобы сбросить данные пользователя, проверь как будет работать на вкладке аккаунта
+    
     setTimeout(
       function(){
         location.reload()//костыль

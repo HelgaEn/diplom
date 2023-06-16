@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Animal } from './animal';
 import { News } from './news';
+import { Request } from './request';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,6 @@ export class PostdataService {
 
   constructor(private http: HttpClient) { }
 
-
-  /*postData(animalId: string){
-    return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/animal/'+animalId+'.json');
-  }*/
   postData(){
     return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/animal.json');
   }
@@ -38,5 +35,18 @@ export class PostdataService {
 
   getCoord(address: string){
     return this.http.get('https://geocode-maps.yandex.ru/1.x/?format=json&apikey=ed610ab4-6610-41f0-bd68-aa19f102bf19&geocode='+address);
+  }
+
+  postFind(find: Request){
+    return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/find.json', find)
+  }
+  postLost(find: Request){
+    return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/lost.json',find)
+  }
+  getFind(){
+    return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/find.json');
+  }
+  getLost(){
+    return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/lost.json');
   }
 }

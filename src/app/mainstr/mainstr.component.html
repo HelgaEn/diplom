@@ -8,8 +8,8 @@
           <h1 class="display-5 fw-bold lh-1 mb-3">Муниципальный приют г. Саранска</h1>
           <p class="lead">Лучше маленькая помощь, чем большое сочувствие!</p>
           <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Стать волонтёром!</button>
-            <button type="button" class="btn btn-outline-secondary btn-lg px-4">О нас</button>
+            <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" [routerLink]="['help']" fragment="volonter">Стать волонтёром!</button>
+            <button type="button" class="btn btn-outline-secondary btn-lg px-4" routerLink="/news">О нас</button>
           </div>
         </div>
       </div>
@@ -25,10 +25,10 @@
         <div class="col">
           <div class="card shadow-sm">
             
-            <div class="bd-placeholder-img card-img-top" width="100%" height="225" ><img width="100%" height="225" src="{{post.image}}"></div>
+            <div class="bd-placeholder-img card-img-top" width="100%" height="225" ><img height="230" src="{{post.image}}"></div>
             
             <div class="card-body">
-              <p class="card-text">{{post.name}}</p>
+              <p class="card-text"><b>{{post.name}}</b></p>
               <p class="card-text">{{post.description}}</p>
             </div>
 
