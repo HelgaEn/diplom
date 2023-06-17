@@ -5,6 +5,19 @@
 
 
     <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mx-auto">
+        <div class="col">
+          <button (click)="setFind()" class="w-100 btn btn-lg btn-primary">кого уже нашли?</button>
+          </div>
+          <div class="col">
+            <button (click)="setLost()" class="w-100 btn btn-lg btn-primary">кто потерялся?</button>
+            </div>
+          </div>
+    </div>
+    
+    
+
+    <div class="container">
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-3 mx-auto">
     <div class="col">
     <h1 class="display-5 fw-bold lh-1 mb-3">Вы нашли безнадзорное животное?</h1>
@@ -85,6 +98,7 @@
                     <div class="card-body">
                       <p class="card-text">{{post.title}}</p>
                       <p class="card-text">{{post.text}}</p>
+                      
                     </div>
             
                   </div>

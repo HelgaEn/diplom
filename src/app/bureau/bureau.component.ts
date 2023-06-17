@@ -66,7 +66,7 @@ export class BureauComponent implements OnInit {
   }
   }
 
-  test(){
+  test(){//потом сотри
   this.post.getCoord(this.address).subscribe({next:(data:any) => {
        
     console.log(data);
@@ -78,69 +78,100 @@ export class BureauComponent implements OnInit {
   }
   
   placemark:any;
-  setPoint(){
-    this.placemark = new ymaps.Placemark([this.coord[0],this.coord[1]],{},{});
-    this.map.geoObjects.add(this.placemark)
-  }
+
   findCard: Request[]=[]
   fCard: Request[]=[]
 
   lostCard: Request[]=[]
   lCard: Request[]=[]
+  findCoord: any=[]
+  lostCoord: any=[]
+
+  setFind(){
+   let key
+  for(key in this.findCoord){
+    
+    this.placemark = new ymaps.Placemark([this.findCoord[key][1],this.findCoord[key][0]],{
+      balloonContent: this.findCoord[key][2]
+    },{})
+    this.map.geoObjects.add(this.placemark);
+    //this.map.geoObjects.remove(this.placemark)
+  }
+  }
+  setLost(){
+  
+    let key
+  for(key in this.lostCoord){
+    
+    this.placemark = new ymaps.Placemark([this.lostCoord[key][1],this.lostCoord[key][0]],{
+      balloonContent: this.findCoord[key][2]
+    },{
+      iconColor: 'red'
+    })
+    this.map.geoObjects.add(this.placemark);
+    //this.map.geoObjects.remove(this.placemark)
+  }
+  }
+
   ngOnInit(){
-    
-    ymaps.ready().then(() => {
-      this.map = new ymaps.Map('map', {
-        center: [54.1838, 45.1749],
-        zoom: 13
-      });
-      this.placemark = new ymaps.Placemark([54.1838, 45.1749],{},{})
 
-      this.map.controls.remove('searchControl')
-      this.map.controls.remove('trafficControl')
-      this.map.controls.remove('fullscreenControl')
-
-      this.map.geoObjects.add(this.placemark);
-    });
-   
-    
-   
-
-      this.post.getFind().subscribe({next:(data:any) => {
-        this.findCard.push(data); 
-                 
-        console.log(Object.values(this.findCard[0])[0].name);
-        let key
-        for(key in Object.values(this.findCard[0])){
-          console.log(Object.values(this.findCard[0])[key]);
-          this.fCard.push({
-            title: Object.values(this.findCard[0])[key].title,
-            text:Object.values(this.findCard[0])[key].text,
-            author:Object.values(this.findCard[0])[key].author,
-            image: Object.values(this.findCard[0])[key].image
-          })
-        }
+ 
+    this.post.getFind().subscribe({next:(data:any) => {
+      this.findCard.push(data); 
+      let key
+      for(key in Object.values(this.findCard[0])){
+       
+        this.fCard.push({
+          title: Object.values(this.findCard[0])[key].title,
+          text:Object.values(this.findCard[0])[key].text,
+          author:Object.values(this.findCard[0])[key].author,
+          image: Object.values(this.findCard[0])[key].image
+        });
+       
+        if(Object.values(this.findCard[0])[key].coord0&&Object.values(this.findCard[0])[key].coord1&&Object.values(this.findCard[0])[key].title){
+          let temp=[Object.values(this.findCard[0])[key].coord0,Object.values(this.findCard[0])[key].coord1,Object.values(this.findCard[0])[key].title]
+          this.findCoord.push(temp)
+         }
         
-      }});
+      }
+            
+    }});
+    
+    this.post.getLost().subscribe({next:(data:any) => {
+      this.lostCard.push(data); 
+      let key
+      for(key in Object.values(this.lostCard[0])){
+        
+        this.lCard.push({
+          title: Object.values(this.lostCard[0])[key].title,
+          text:Object.values(this.lostCard[0])[key].text,
+          author:Object.values(this.lostCard[0])[key].author,
+          image: Object.values(this.lostCard[0])[key].image
+        })
+        if(Object.values(this.lostCard[0])[key].coord0&&Object.values(this.lostCard[0])[key].coord1){
+          let temp=[Object.values(this.lostCard[0])[key].coord0,Object.values(this.lostCard[0])[key].coord1,Object.values(this.lostCard[0])[key].title]
+          this.lostCoord.push(temp)
+          
+        }
+      }
       
-      this.post.getLost().subscribe({next:(data:any) => {
-        this.lostCard.push(data); 
-        
-        console.log(Object.values(this.lostCard[0])[0].name);
-        let key
-        for(key in Object.values(this.lostCard[0])){
-          console.log(Object.values(this.lostCard[0])[key]);
-          this.lCard.push({
-            title: Object.values(this.lostCard[0])[key].title,
-            text:Object.values(this.lostCard[0])[key].text,
-            author:Object.values(this.lostCard[0])[key].author,
-            image: Object.values(this.lostCard[0])[key].image
-          })
-        }
-        
-      }});
+    }});
+
+
     
   
+    ymaps.ready().then(() => {
+  this.map = new ymaps.Map('map', {
+    center: [54.1838, 45.1749],
+    zoom: 13
+  });
+  console.log('map')
+  this.map.controls.remove('searchControl')
+  this.map.controls.remove('trafficControl')
+  this.map.controls.remove('fullscreenControl')
+  
+});
+
 
   }
  

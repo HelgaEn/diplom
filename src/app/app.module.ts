@@ -22,8 +22,6 @@ import { BureauComponent } from './bureau/bureau.component';
 
 
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +33,8 @@ import { BureauComponent } from './bureau/bureau.component';
     NewsComponent,
     AdminComponent,
     HelpComponent,
-    BureauComponent
+    BureauComponent,
+   
   ],
   imports: [
     BrowserModule,
