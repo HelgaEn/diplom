@@ -19,7 +19,7 @@ export class AdminaccessGuard implements CanActivate {
         return true;
         }
         else{
-          return this.router.navigateByUrl('/auth');
+          return this.router.navigateByUrl('/');
         }
   }
   

@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
       }
     })
     this.rolesService.role ='user';
-    return this.router.navigateByUrl('/profile')
+    return this.router.navigateByUrl('/auth')
    }
 
   ngOnInit(): void {

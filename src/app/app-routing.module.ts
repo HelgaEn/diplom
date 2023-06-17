@@ -29,7 +29,8 @@ const routes: Routes = [
   {
     path: "profile",
     title:"Профиль",
-    component: ProfileComponent//access 
+    component: ProfileComponent,//access 
+    canActivate: [AccessGuard]
   }, 
   {
     path: "auth",
@@ -49,7 +50,8 @@ const routes: Routes = [
   {
     path: "admin",
     title:"Панель управления",
-    component: AdminComponent 
+    component: AdminComponent,
+    canActivate: [AdminaccessGuard] 
   },
   {
     path: "help",

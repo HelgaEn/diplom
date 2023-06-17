@@ -16,7 +16,7 @@ export class AccessGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.roles.role=="admin"||this.roles.role=="user"){
+      if(this.roles.role=="admin"||this.roles.role=="user"||this.roles.role=="volunteer"){
       return true;
       }
       else{
