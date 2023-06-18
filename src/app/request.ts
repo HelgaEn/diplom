@@ -4,6 +4,6 @@ coord1?: string,
 title: string,
 text: string,
 image?:string,
-author: string | null
-    
+author: string | null,
+id?: string
 }

@@ -65,4 +65,11 @@ export class PostdataService {
   getLost(){
     return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/lost.json');
   }
+
+  postRequest(req: any){
+    return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/requests.json',req)
+  }
+  getRequest(){
+    return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/requests.json')
+  }
 }

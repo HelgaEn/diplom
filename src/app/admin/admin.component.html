@@ -3,14 +3,20 @@
       <form class="">
         <h1 class="h3 mb-3 fw-bold">Ввести информацию о новом подопечном</h1>    
         <div class="form-floating mb-3">
-          <input #log="ngModel" name="animal" [(ngModel)]="inputAnimal.type" type="text"  class="form-control"  >
-          <label for="floatingInput">Животное</label>
+         
+            <label class="form-label">Животное</label>
+            
+            <select #log="ngModel" name="animal" [(ngModel)]="inputAnimal.type" type="text"  class="form-control" id="type">
+              <option value="cat">Кошка</option>
+              <option value="dog">Собака</option>
+           </select>
+          
        </div>
         <div class="form-floating mb-3">
           <input required #pass="ngModel" name="name" [(ngModel)]="inputAnimal.name" type="text" class="form-control"  >
           <label for="floatingInput">Кличка</label>
         </div>      
-        <!--minlength="5" pattern="[a-zA-Z]^[ 0-9]+$*"-->
+       
         <div class="form-floating mb-3">
            <input #log="ngModel" name="age" [(ngModel)]="inputAnimal.age" type="text"  class="form-control"  >
            <label for="floatingInput">Возраст</label>
@@ -59,7 +65,7 @@
     <div class="card shadow-sm my-3 mx-4"  >
             <div class="list-group list-group-flush">
                 <ng-container *ngFor="let user of tusers">
-                <a class="list-group-item" (click)="open(user)">Редактировать пользователя <b>{{user.email}}</b> {{user.name}}</a>
+                <a class="list-group-item" (click)="open(user)">Редактировать пользователя <b>{{user.email}}</b> {{user.name}} {{user.surname}}</a>
             </ng-container>
           </div>
 </div>

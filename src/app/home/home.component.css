@@ -1,0 +1,9 @@
+.card-img-top{
+    background-color: darkgray;
+    text-align: center;
+}
+
+.shadow-sm{
+    overflow: auto;
+    height: 500px;
+}

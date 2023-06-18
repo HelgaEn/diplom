@@ -5,9 +5,6 @@
      
       <div class="col-lg-6">
 
-        <div class="col-10 col-sm-8 col-lg-5">
-          <img src="" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
-        </div>
 <!-- {{this.thisUser.image}} -->
         <h1 class="display-5 fw-bold lh-1 mb-3"> 
           {{this.thisUser.name}} </h1>
@@ -24,20 +21,76 @@
             {{this.thisUser.role}}
             </p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='guest')? ('none'):('unset')}" routerLink="/admin">Администрирование</button>
+          <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}" routerLink="/admin">Администрирование</button>
         </div>
      
       </div>
 
-
-      <div>
-      <div class="col-lg-5  ">
-        <button [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role===null)? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}" type="button" class="btn btn-primary btn-lg px-4 me-md-2" routerLink="/admin">Панель управления</button>
-      </div>
+      <div [ngStyle]="{'display':(rolesService.role==='admin')? ('none'):(rolesService.role==='guest')? ('none'):('unset')}">
+        <main class="form-signin col-lg-4 mx-auto">
+            <form #myForm="ngForm" >
+              <h1 class="h3 mb-3 fw-bold">Заявка на обратную связь</h1>    
+              <div class="form-floating mb-3">
+                <input #log="ngModel" name="title" [(ngModel)]="mess.title" type="text"  class="form-control"  >
+                <label for="floatingInput">Заголовок</label>
+             </div>
+              <div class="form-floating mb-3">
+                <textarea required #pass="ngModel" name="src" [(ngModel)]="mess.text" type="text" class="form-control" ></textarea>
+                <label for="floatingPassword">Текст</label>
+              </div>      
+              <div class="form-floating mb-3">
+                 <input #log="ngModel" name="text" [(ngModel)]="contacts" type="text"  class="form-control"  >
+                 <label for="floatingInput">Дополнительные контактные данные</label>
+              </div> 
+                  
+              <button   (click)="sendRequest()" class="w-100 btn btn-lg btn-primary" type="submit">Отправить</button>
+        
+            </form>
+          </main>
     </div>
+
+<h2 [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}">Список заявок</h2>
+    <ng-container *ngFor="let post of tposts" >
+      <div class="col" [ngStyle]="{'display':(rolesService.role==='user')? ('none'):(rolesService.role==='volunteer')? ('none'):('unset')}">
+        <div class="card shadow-sm">
+                 
+          <div class="card-body">
+            <p class="card-text">От пользователя <b>{{post.author}}</b></p>
+            <p class="card-text">На тему: {{post.title}}</p>
+            <p class="card-text">{{post.text}}</p>
+          </div>
+          <button class="w-30 btn  btn-primary mx-auto">удалить</button>
+        </div>
+      </div>
+    </ng-container>
+
+    <div [ngStyle]="{'display':(rolesService.role==='admin')? ('none'):(rolesService.role==='user')? ('none'):('unset')}">
+      <main class="form-signin col-lg-6 mx-auto">
+        <form #myForm="ngForm" >
+          <h1 class="h3 mb-3 fw-bold">Новое событие</h1>    
+          <div class="form-floating mb-3">
+            <input #log="ngModel" name="title" [(ngModel)]="inputNews.title" type="text"  class="form-control"  >
+            <label for="floatingInput">Заголовок</label>
+         </div>
+          <div class="form-floating mb-3">
+            <input required #pass="ngModel" name="src" [(ngModel)]="inputNews.img" type="text" class="form-control"  >
+            <label for="floatingPassword">Ссылка на изображение</label>
+          </div>      
+          <!--minlength="5" pattern="[a-zA-Z]^[ 0-9]+$*"-->
+          <div class="form-floating mb-3">
+             <input #log="ngModel" name="text" [(ngModel)]="inputNews.text" type="text"  class="form-control"  >
+             <label for="floatingInput">Что нового?</label>
+          </div>
+                  
+              
+          <button   (click)="newNews()" class="w-100 btn btn-lg btn-primary" type="submit">Отправить</button>
+        </form>
+      </main>
+  </div>
+
     </div>
   </div>
-  <div class="col-4 mx-auto">
+  
+    
 
-</div>
 
