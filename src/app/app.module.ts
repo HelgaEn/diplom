@@ -18,6 +18,7 @@ import { HelpComponent } from './help/help.component';
 import { NgxsLoggerPlugin, NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { BureauComponent } from './bureau/bureau.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -34,6 +35,7 @@ import { BureauComponent } from './bureau/bureau.component';
     AdminComponent,
     HelpComponent,
     BureauComponent,
+    HomeComponent,
    
   ],
   imports: [

@@ -54,3 +54,52 @@
         </form>
       </main>
 </div>
+<h1  class="text-center my-5">Управление пользователями</h1>
+
+    <div class="card shadow-sm my-3 mx-4"  >
+            <div class="list-group list-group-flush">
+                <ng-container *ngFor="let user of tusers">
+                <a class="list-group-item" (click)="open(user)">Редактировать пользователя <b>{{user.email}}</b> {{user.name}}</a>
+            </ng-container>
+          </div>
+</div>
+
+  <div [ngStyle]="{'display':(display===0)? ('none'):('unset')}">
+    
+    <h1 class="text-center my-5">Редактирование</h1>
+
+    <form class="container mb-5">
+        <div class="mb-3">
+          <label class="form-label">Имя</label>
+          <input name="edname" [(ngModel)]="userEdit.name" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Фамилия</label>
+          <input name="edsurname" [(ngModel)]="userEdit.surname" type="text" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Роль</label>
+            
+            <select name="edrole" [(ngModel)]="userEdit.role" type="text" class="form-control" id="roles">
+              <option value="user">Пользователь</option>
+              <option value="volunteer">Волонтёр</option>
+              <option value="admin">Администратор</option>
+           </select>
+          </div>
+        <button (click)="editUser()" type="submit" class="btn btn-primary">Сохранить</button>
+      </form>
+
+  </div>
+
+  <h1  class="text-center my-5">Управление подопечными</h1>
+
+    <div class="card shadow-sm my-3 mx-4"  >
+            <div class="list-group list-group-flush">
+                <ng-container *ngFor="let post of tposts">
+                <a class="list-group-item" >Подопечный <b>{{post.name}}</b> {{post.type}} {{post.age}}
+                <button  type="submit" class="btn btn-primary mx-4">Нашел дом</button>
+      <button  type="submit" class="btn btn-primary">Удалить</button>
+    </a>
+            </ng-container>
+          </div>
+</div>

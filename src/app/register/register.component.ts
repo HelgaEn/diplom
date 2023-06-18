@@ -10,6 +10,7 @@ import {
 } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserdataService } from '../userdata.service';
+import { CheckboxControlValueAccessor } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(public rolesService: RolesService, public router: Router, private http: HttpClient,private userdata: UserdataService) { }
 
-  user: User = {
+ // user: User = {
+  user = {
     password: '',
     name: '',
     surname: '',
@@ -31,8 +33,23 @@ export class RegisterComponent implements OnInit {
   //str=idgenerate()
   //this.user.id=str;
 
+  checkUser(){
+    var check;
+    this.userdata.getUser(this.user.email).subscribe({
+      next: (resp)=>{
+        check = resp;
+        console.log(resp)
+        if (check==null)
+        this.regUser()
+    else
+    alert('пользователь с данным email уже существует')
+  
+      }
+    })
+  }
   regUser(){
-    
+
+    //if(this.checkUser()){   
     this.userdata.regUser(this.user).subscribe({
       next: (resp)=>{
         console.log(resp);
@@ -40,7 +57,12 @@ export class RegisterComponent implements OnInit {
     })
     this.rolesService.role ='user';
     return this.router.navigateByUrl('/auth')
-   }
+   /*}
+   //else
+   {
+   return alert('пользователь с данным email уже существует')
+  }*/
+  }
 
   ngOnInit(): void {
   }

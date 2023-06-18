@@ -13,6 +13,7 @@ import { NewsComponent } from './news/news.component';
 import { AdminComponent } from './admin/admin.component';
 import { HelpComponent } from './help/help.component';
 import { BureauComponent } from './bureau/bureau.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   
@@ -62,6 +63,11 @@ const routes: Routes = [
     path: "bureau",
     title:"Бюро находок",
     component: BureauComponent
+  },
+  {
+    path: "home",
+    title:"Обрели дом",
+    component: HomeComponent
   },
   {
     path: "**",

@@ -4,11 +4,11 @@ import { Animal } from '../animal';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-podopechnie',
-  templateUrl: './podopechnie.component.html',
-  styleUrls: ['./podopechnie.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class PodopechnieComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
   constructor(private router: Router, public post: PostdataService) { }
 
@@ -16,10 +16,15 @@ export class PodopechnieComponent implements OnInit {
   tposts: Animal[]=[];
 
   ngOnInit(): void {
-    this.post.postData().subscribe({next:(data:any) => {
+    this.post.homeData().subscribe({next:(data:any) => {
       this.posts.push(data); 
+      //this.posts= data;
+     // console.log(data);  
+       
+     // console.log(Object.values(this.posts[0])[0].name);
       let key
       for(key in Object.values(this.posts[0])){
+       // console.log(Object.values(this.posts[0])[key]);
         this.tposts.push({
           id: Object.values(this.posts[0])[key].id,
           name: Object.values(this.posts[0])[key].name,
@@ -32,5 +37,6 @@ export class PodopechnieComponent implements OnInit {
       
     }});
   }
+
 
 }

@@ -36,17 +36,26 @@ export class UserdataService {
     this.newUser=user;
      let userId: any;
     userId =user.email;
-    userId = userId.replace(/[^a-zа-яё]/gi, '');
-
+    //userId = userId.replace(/[^a-zа-яё]/gi, ''); 
+    userId = userId.replace(/[\s.,@]/g, '');
    //return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/user.json',
    return this.http.patch('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/user.json', {[userId]:user});
 
   }
 
   getUser(login: string){
-  login = login.replace(/[^a-zа-яё]/gi, '');
+  //login = login.replace(/[^a-zа-яё]/gi, '');
+  login = login.replace(/[\s.,@]/g, '');
   return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/user/'+login+'.json');
 
+}
+updateUser(user: User){
+  let userId: any;
+  userId =user.email;
+  return this.http.put('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/user/'+userId+'.json',user);
+}
+getUsers(){
+  return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/user.json')
 }
 setVol(email: string){
   return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/zayavki.json', email)

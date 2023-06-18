@@ -25,12 +25,12 @@ export class MainstrComponent implements OnInit {
    this.post.postData().subscribe({next:(data:any) => {
     this.posts.push(data); 
     //this.posts= data;
-    console.log(data);  
+    //console.log(data);  
      
-    console.log(Object.values(this.posts[0])[0].name);
+    //console.log(Object.values(this.posts[0])[0].name);
     let key
     for(key in Object.values(this.posts[0])){
-      console.log(Object.values(this.posts[0])[key]);
+      //console.log(Object.values(this.posts[0])[key]);
       this.tposts.push({
         id: Object.values(this.posts[0])[key].id,
         name: Object.values(this.posts[0])[key].name,

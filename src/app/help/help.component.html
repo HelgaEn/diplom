@@ -15,13 +15,11 @@
     <form class="">
  
       <div class="form-floating mb-3">
-        <input #log="ngModel" name="email" [(ngModel)]="user.email" type="text"  class="form-control"  >
+        <input required email #helpemail="ngModel" name="helpemail" [(ngModel)]="user.email" type="text"  class="form-control"  >
         <label for="floatingInput">email</label>
      </div>
-     <button    class="w-100 btn btn-lg btn-primary" type="submit" (click)="volUser()" >Отправить</button>
-     <!-- [disabled]="log.invalid || pass.invalid"-->
-           
-         </form>
+     <button [disabled]="helpemail.invalid" class="w-100 btn btn-lg btn-primary" type="submit" (click)="volUser()" >Отправить</button>
+              </form>
        </main>
 
 <p class="text-center my-5 fs-4"> Пройти регистрацию и отправить заявку</p>
@@ -31,27 +29,38 @@
       <form class="">
    
         <div class="form-floating mb-3">
-          <input #log="ngModel" name="email" [(ngModel)]="user.email" type="text"  class="form-control"  >
+          <input required email  #email="ngModel"  name="reg-email" [(ngModel)]="user.email" type="email"  class="form-control"  >
           <label for="floatingInput">email</label>
        </div>
+       <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+        Некорректный email
+    </div>
         <div class="form-floating mb-3">
-          <input required #pass="ngModel" name="password" [(ngModel)]="user.password" type="text" class="form-control"  >
+          <input required minlength="5" #pass="ngModel" name="reg-password" [(ngModel)]="user.password" type="text" class="form-control"  >
           <label for="floatingPassword">Пароль</label>
-        </div>      
+        </div>   
+        <div [hidden]="pass.valid || pass.untouched" class="alert alert-danger">
+          не менее 5 символов
+      </div>   
         <!--minlength="5" pattern="[a-zA-Z]^[ 0-9]+$*"-->
         <div class="form-floating mb-3">
-           <input #log="ngModel" name="name" [(ngModel)]="user.name" type="text"  class="form-control"  >
+           <input required minlength="3" pattern="[a-zA-Zа-яА-Я]*" #name="ngModel" name="reg-name" [(ngModel)]="user.name" type="text"  class="form-control"  >
            <label for="floatingInput">Имя</label>
         </div>
+        <div [hidden]="name.valid || name.untouched" class="alert alert-danger">
+          Имя содержит только символы алфавита, не менее 3х символов
+      </div> 
         <div class="form-floating mb-3">
-            <input #log="ngModel" name="surname" [(ngModel)]="user.surname" type="text"  class="form-control"  >
+            <input required pattern="[a-zA-Zа-яА-Я]*" minlength="3" #surname="ngModel" name="reg-surname" [(ngModel)]="user.surname" type="text"  class="form-control"  >
             <label for="floatingInput">Фамилия</label>
          </div>
+         <div [hidden]="surname.valid || surname.untouched" class="alert alert-danger">
+          Фамилия содержит только символы алфавита, не менее 3х символов
+      </div> 
         
             
-        <button    class="w-100 btn btn-lg btn-primary" type="submit" (click)="regUser()" >Регистрация</button>
+        <button [disabled]="email.invalid || pass.invalid || name.invalid || surname.invalid" (click)="checkUser()"  class="w-100 btn btn-lg btn-primary" type="submit">Регистрация</button>
   <!-- [disabled]="log.invalid || pass.invalid"-->
-        
       </form>
     </main>
     

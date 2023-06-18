@@ -9,7 +9,7 @@ import { RolesService } from '../roles.service';
   styleUrls: ['./help.component.css']
 })
 export class HelpComponent implements OnInit {
-  user: User = {
+  user = {
     password: '',
     name: '',
     surname: '',
@@ -18,18 +18,36 @@ export class HelpComponent implements OnInit {
   };
 
   constructor(private userdata: UserdataService,private rolesService: RolesService) { }
-
+  
+  checkUser(){
+    var check;
+    this.userdata.getUser(this.user.email).subscribe({
+      next: (resp)=>{
+        check = resp;
+        console.log(resp)
+        if (check==null)
+        this.regUser()
+    else
+    alert('пользователь с данным email уже существует')
+  
+      }
+    })
+  }
   regUser(){
+
+    //if(this.checkUser()){   
     this.userdata.regUser(this.user).subscribe({
       next: (resp)=>{
         console.log(resp);
       }
     })
     this.rolesService.role ='user';
-    //отправить емейл в таблицу заявок
-    //this.volUser()
-   
+    
+  this.volUser()
   }
+
+    
+  
  volUser(){/* 
      //отправить емейл в таблицу заявок
      this.userdata.setVol(this.user.email).subscribe({})*/
