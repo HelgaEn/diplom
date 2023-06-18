@@ -18,10 +18,12 @@ export class PodopechnieComponent implements OnInit {
   ngOnInit(): void {
     this.post.postData().subscribe({next:(data:any) => {
       this.posts.push(data); 
+     // console.log(this.posts[0])
       let key
       for(key in Object.values(this.posts[0])){
+        //console.log(Object.keys(this.posts[0])[key])
         this.tposts.push({
-          id: Object.values(this.posts[0])[key].id,
+          id: Object.keys(this.posts[0])[key],
           name: Object.values(this.posts[0])[key].name,
           type: Object.values(this.posts[0])[key].type,
           age: Object.values(this.posts[0])[key].age,

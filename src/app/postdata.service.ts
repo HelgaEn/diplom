@@ -17,6 +17,20 @@ export class PostdataService {
   homeData(){
     return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/home.json');
   }
+  postHome(newA: Animal){
+    return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/home.json',
+    {
+      id:newA.id,
+      type: newA.type,
+      name: newA.name,
+      age: newA.age,
+      image: newA.image,
+      description: newA.description     
+    });
+  }
+  postHomeDelete(id: any){
+    return this.http.delete('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/animal/'+id+'.json')
+  }
   postanimal(newA: Animal){
     return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/animal.json',
     {

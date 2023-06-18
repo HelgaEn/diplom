@@ -97,8 +97,8 @@
             <div class="list-group list-group-flush">
                 <ng-container *ngFor="let post of tposts">
                 <a class="list-group-item" >Подопечный <b>{{post.name}}</b> {{post.type}} {{post.age}}
-                <button  type="submit" class="btn btn-primary mx-4">Нашел дом</button>
-      <button  type="submit" class="btn btn-primary">Удалить</button>
+                <button  type="submit" class="btn btn-primary mx-4" (click)="findHome(post)">Нашел дом</button>
+      <button  type="submit" class="btn btn-primary" (click)="deleteAnimal(post)">Удалить</button>
     </a>
             </ng-container>
           </div>

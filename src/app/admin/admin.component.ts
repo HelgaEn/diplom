@@ -74,7 +74,7 @@ tposts: Animal[]=[];
     let key
     for(key in Object.values(this.posts[0])){
       this.tposts.push({
-        id: Object.values(this.posts[0])[key].id,
+        id: Object.keys(this.posts[0])[key],
         name: Object.values(this.posts[0])[key].name,
         type: Object.values(this.posts[0])[key].type,
         age: Object.values(this.posts[0])[key].age,
@@ -93,10 +93,16 @@ display=0;
     this.userEdit=user
   }
   findHome(animal: any){
-
+//console.log(animal.id)
+this.animal.postHome(animal).subscribe({
+  next: (resp)=>{
+    alert('информация о подопечном перемещена в архив');
+  }
+})
+this.animal.postHomeDelete(animal.id).subscribe({})
   }
   deleteAnimal(animal: any){
-
+    this.animal.postHomeDelete(animal.id).subscribe({})
   }
 
   editUser(){
