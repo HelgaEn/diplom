@@ -72,4 +72,19 @@ export class PostdataService {
   getRequest(){
     return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/requests.json')
   }
+  delRequest(id: any){
+    return this.http.delete('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/requests/'+id+'.json')
+  }
+  volUser(id: string, animal: string){
+    return this.http.post('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/vol.json',{
+      userId: id,
+      animalId: animal
+    })
+  }
+  getVolUser(){
+    return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/vol.json')
+  }
+  getAnimal(id: any){
+    return this.http.get('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/animal/'+id+'.json')
+  }
 }

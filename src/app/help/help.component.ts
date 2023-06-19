@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserdataService } from '../userdata.service';
 import { RolesService } from '../roles.service';
+import { Request } from '../request';
+import { PostdataService } from '../postdata.service';
 
 @Component({
   selector: 'app-help',
@@ -17,7 +19,7 @@ export class HelpComponent implements OnInit {
     role: 'user'
   };
 
-  constructor(private userdata: UserdataService,private rolesService: RolesService) { }
+  constructor(private userdata: UserdataService,private rolesService: RolesService, private post: PostdataService) { }
   
   checkUser(){
     var check;
@@ -43,14 +45,25 @@ export class HelpComponent implements OnInit {
     })
     this.rolesService.role ='user';
     
-  this.volUser()
+  this.volUser(this.user.email)
   }
 
-    
-  
- volUser(){/* 
-     //отправить емейл в таблицу заявок
-     this.userdata.setVol(this.user.email).subscribe({})*/
+  request: Request ={
+    title:'Заявка на вступление в ряды волонтёров',
+    text: 'От зарегестрированного пользователя ',
+    author: ''
+  }
+  emailvol='';
+ volUser(email: any){
+   
+     this.request.author=this.userdata.nowUser.email;
+     this.request.text=this.request.text+email;
+     this.post.postRequest(this.request).subscribe({
+      next: (data)=>{
+        alert("ваша заявка отправлена")
+      }
+    })
+    this.emailvol='';
   }
 
   ngOnInit(): void {

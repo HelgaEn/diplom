@@ -92,6 +92,15 @@
               <option value="admin">Администратор</option>
            </select>
           </div>
+          <div class="mb-3">
+            <label class="form-label">Подопечный(для волонтёров)</label>
+            
+            <select name="edrole" [(ngModel)]="volAnimal" type="text" class="form-control" id="animals">
+              <ng-container *ngFor="let post of tposts">
+              <option value="{{post.id}}">{{post.name}} {{post.age}}</option>
+            </ng-container>
+           </select>
+          </div>
         <button (click)="editUser()" type="submit" class="btn btn-primary">Сохранить</button>
       </form>
 

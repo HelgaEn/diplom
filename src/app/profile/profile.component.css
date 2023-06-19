@@ -1,0 +1,10 @@
+
+.imgtop{
+    background-color: darkgray;
+    text-align: center;
+}
+
+.cardshow{
+    overflow: auto;
+    height: 500px;
+}

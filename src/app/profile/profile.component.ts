@@ -5,12 +5,18 @@ import { UserdataService } from '../userdata.service';
 import { PostdataService } from '../postdata.service';
 import { Request } from '../request';
 import { News } from '../news';
+import { Animal } from '../animal';
 
+export interface vol {
+  userId: string,
+  animalId: string
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit {
 
   constructor(public rolesService: RolesService, public userdata: UserdataService, public post: PostdataService) { }
@@ -84,7 +90,38 @@ showRequests(){
     }
     
   }});
+}
+deleteReq(id: any){
+this.post.delRequest(id).subscribe({})
+}
 
+volData: vol[]=[]
+tvolData:vol[]=[]
+
+animal: vol[]=[]
+animalShow: Animal[]=[]
+tanimalShow: Animal[]=[]
+showAnimal(){
+  this.post.getVolUser().subscribe({next:(data:any) => {
+    this.volData.push(data); 
+    
+    let key
+    for(key in Object.values(this.volData[0])){
+      if(Object.values(this.volData[0])[key].userId==this.thisUser.email?.replace(/[\s.,@]/g, '')){
+        this.animal.push({//сохранили животное для волонтёра
+          userId: Object.values(this.volData[0])[key].userId,
+        animalId: Object.values(this.volData[0])[key].animalId
+        })
+        this.post.getAnimal(Object.values(this.volData[0])[key].animalId).subscribe({next:(data:any) => {
+          this.animalShow.push(data); 
+         
+          
+        }})
+      }
+   
+    }
+    
+  }});
 }
 
   
@@ -100,7 +137,7 @@ showRequests(){
             localStorage.removeItem("reload");
       
         }
-    
+    this.showAnimal()
   }
 
 }

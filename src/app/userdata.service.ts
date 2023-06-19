@@ -52,6 +52,7 @@ export class UserdataService {
 updateUser(user: User){
   let userId: any;
   userId =user.email;
+  userId = userId.replace(/[\s.,@]/g, '');
   return this.http.put('https://vkrproj-f1cbd-default-rtdb.firebaseio.com/user/'+userId+'.json',user);
 }
 getUsers(){

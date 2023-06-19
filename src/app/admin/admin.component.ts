@@ -111,6 +111,9 @@ this.animal.postHomeDelete(animal.id).subscribe({})
         alert('изменено');//тут переделать в алерт об успешной операции
       }
     })
+    if (this.volAnimal){
+      this.setVol(this.userEdit)
+    }
   }
  
   newAnimal(){
@@ -131,6 +134,12 @@ this.animal.postHomeDelete(animal.id).subscribe({})
       }
     });
 
-    //document.getElementById('form')?.onreset()
+  }
+
+  volAnimal: any;
+  setVol(user: any){
+    var userId=user.email.replace(/[\s.,@]/g, '');
+    this.animal.volUser(userId, this.volAnimal).subscribe({});
+
   }
 }

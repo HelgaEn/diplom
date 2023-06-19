@@ -15,10 +15,10 @@
     <form class="">
  
       <div class="form-floating mb-3">
-        <input required email #helpemail="ngModel" name="helpemail" [(ngModel)]="user.email" type="text"  class="form-control"  >
+        <input required email #helpemail="ngModel" name="helpemail" [(ngModel)]="emailvol" type="text"  class="form-control"  >
         <label for="floatingInput">email</label>
      </div>
-     <button [disabled]="helpemail.invalid" class="w-100 btn btn-lg btn-primary" type="submit" (click)="volUser()" >Отправить</button>
+     <button [disabled]="helpemail.invalid" class="w-100 btn btn-lg btn-primary" type="submit" (click)="volUser(emailvol)" >Отправить</button>
               </form>
        </main>
 
