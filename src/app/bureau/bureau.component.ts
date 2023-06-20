@@ -43,12 +43,13 @@ export class BureauComponent implements OnInit {
     }
   });
   this.post.postFind(this.findData).subscribe({})
-  console.log(this.findData)
+  //console.log(this.findData)
   this.findData={
     title: '',
     text: '',
     author: localStorage.getItem('name')
   }
+  this.address='';
   }
   bureauLost(){
     this.post.getCoord(this.addressLost).subscribe({next:(data:any) => {
@@ -58,12 +59,13 @@ export class BureauComponent implements OnInit {
     }
   });
   this.post.postLost(this.lostData).subscribe({})
-  console.log(this.lostData)
+  //console.log(this.lostData)
   this.lostData={
     title: '',
     text: '',
     author: localStorage.getItem('name')
   }
+  this.addressLost='';
   }
 
   test(){//потом сотри
@@ -92,7 +94,7 @@ export class BureauComponent implements OnInit {
   for(key in this.findCoord){
     
     this.placemark = new ymaps.Placemark([this.findCoord[key][1],this.findCoord[key][0]],{
-      balloonContent: this.findCoord[key][2]
+     // balloonContent: this.findCoord[key][2]
     },{})
     this.map.geoObjects.add(this.placemark);
     //this.map.geoObjects.remove(this.placemark)
@@ -104,7 +106,7 @@ export class BureauComponent implements OnInit {
   for(key in this.lostCoord){
     
     this.placemark = new ymaps.Placemark([this.lostCoord[key][1],this.lostCoord[key][0]],{
-      balloonContent: this.findCoord[key][2]
+     // balloonContent: this.findCoord[key][2]
     },{
       iconColor: 'red'
     })
