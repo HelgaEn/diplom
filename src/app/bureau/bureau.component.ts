@@ -38,34 +38,40 @@ export class BureauComponent implements OnInit {
   bureauFind(){
     this.post.getCoord(this.address).subscribe({next:(data:any) => {
       var coo=data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ', 2);
+      console.log(coo)
       this.findData.coord0=coo[0];
+      console.log(this.findData.coord0)
       this.findData.coord1=coo[1];
+      console.log(this.findData.coord1)
+      this.post.postFind(this.findData).subscribe({})
     }
   });
-  this.post.postFind(this.findData).subscribe({})
-  //console.log(this.findData)
-  this.findData={
+  
+  console.log(this.findData)
+  /*this.findData={
     title: '',
     text: '',
     author: localStorage.getItem('name')
   }
-  this.address='';
+  //this.address='';*/
   }
   bureauLost(){
     this.post.getCoord(this.addressLost).subscribe({next:(data:any) => {
       var coo=data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(' ', 2);
+      console.log(coo)
       this.lostData.coord0=coo[0];
       this.lostData.coord1=coo[1];
+      this.post.postLost(this.lostData).subscribe({})
     }
   });
-  this.post.postLost(this.lostData).subscribe({})
-  //console.log(this.lostData)
+  
+  /*console.log(this.lostData)
   this.lostData={
     title: '',
     text: '',
     author: localStorage.getItem('name')
-  }
-  this.addressLost='';
+  }*/
+  //this.addressLost='';
   }
 
   test(){//потом сотри
@@ -92,9 +98,9 @@ export class BureauComponent implements OnInit {
   setFind(){
    let key
   for(key in this.findCoord){
-    
+    console.log(this.findCoord[key][1]+this.findCoord[key][0])
     this.placemark = new ymaps.Placemark([this.findCoord[key][1],this.findCoord[key][0]],{
-     // balloonContent: this.findCoord[key][2]
+      balloonContent: this.findCoord[key][2]
     },{})
     this.map.geoObjects.add(this.placemark);
     //this.map.geoObjects.remove(this.placemark)
@@ -104,9 +110,9 @@ export class BureauComponent implements OnInit {
   
     let key
   for(key in this.lostCoord){
-    
+    console.log(this.lostCoord[key][1]+this.lostCoord[key][0])
     this.placemark = new ymaps.Placemark([this.lostCoord[key][1],this.lostCoord[key][0]],{
-     // balloonContent: this.findCoord[key][2]
+      balloonContent: this.lostCoord[key][2]
     },{
       iconColor: 'red'
     })
